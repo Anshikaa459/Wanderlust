@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV != 'production') {
+  require('dotenv').config();
+  // console.log("Cloud name:", process.env.CLOUDINARY_CLOUD_NAME); // debug
+}
 const mongoose = require('mongoose');
 const initdata = require('./data.js');
 const Listing = require('../models/listing.js');
@@ -8,10 +12,10 @@ main()
   })
   .catch((err) => console.log(err));
 
+const dbUrl = process.env.ATLASDB_URL;
+
 async function main() {
-  await mongoose.connect(
-    'mongodb+srv://anshikaj341:WjUQUthY9j0SATrj@cluster0.c80reqc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
-  );
+  await mongoose.connect(dbUrl);
 }
 
 const initdb = async () => {
