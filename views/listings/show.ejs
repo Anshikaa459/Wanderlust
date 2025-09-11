@@ -8,8 +8,14 @@
       <!-- <img src="<%= listing.image && listing.image.url ? listing.image.url : '' %>" class="card-img-top show-img" alt="listing_image"> -->
   <div class="card-body">
     <p class="card-text">
-        <b><%=listing.owner.username%></b>
-        </p>
+      <b>
+          <% if (listing.owner) { %>
+            <%= listing.owner.username %>
+          <% } else { %>
+            <i>Unknown Owner</i>
+          <% }%>
+      </b>
+    </p>
     
         <p class="card-text"><%=listing.description%></p>
         <p class="card-text"><%=listing.location%></p>
@@ -18,7 +24,8 @@
     </p>
   </div>
     </div>
-    <% if(currUser && listing.owner._id.equals(currUser._id)){%>
+    <% if (currUser && listing.owner && listing.owner._id && listing.owner._id.equals(currUser._id)) { %>
+
    <div class="btns">
     <a href="/listings/<%=listing._id%>/edit" class="btn btn-dark col-2 offset-3 add-btn">Edit</a>
     <br>
