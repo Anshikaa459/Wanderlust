@@ -131,3 +131,57 @@ body{
     padding-left: 0;
     padding-right: 0;
 }
+
+/* ✅ Responsive Navbar */
+@media (max-width: 768px) {
+  .navbar {
+    height: auto;
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar-nav {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    font-size: 0.9rem; /* smaller text on mobile */
+  }
+
+  .nav-link {
+    flex: 0 0 auto; /* prevents squishing */
+  }
+}
+
+/* ✅ Responsive Cards */
+@media (max-width: 768px) {
+  .listing-card {
+    margin-bottom: 1.5rem;
+  }
+
+  .card-img-top,
+  .show-img {
+    height: 200px; /* fixed size for mobile */
+  }
+}
+
+@media (min-width: 769px) {
+  .listing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+/* ✅ Footer Responsiveness */
+@media (max-width: 576px) {
+  .f-info {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .f-info-links, .f-info-socials, .f-info-brand {
+    margin: 0.5rem 0;
+  }
+}

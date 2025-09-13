@@ -1,4 +1,4 @@
-<style>
+<!-- <style>
   .search-btn{
     background-color: #fe424d;
     color: #fff;
@@ -47,12 +47,7 @@
       </div>
          <div class="navbar-nav ms-auto">
           <a class="nav-link" href="/listings/new">Airbnb your home</a>
-          <!-- <% if(!currUser){%>
-            <a class="nav-link active" aria-current="page" href="signup"><b>Sign up</b></a>
-            <a class="nav-link" href="/login"><b>Log in</b></a>
-          <%}%><% if(currUser){%>
-            <a class="nav-link" href="/logout"><b>Log out</b></a>
-          <%}%> -->
+          
           <% if (typeof currUser !== "undefined" && currUser) { %>
             <a class="nav-link" href="/logout">Log out</a>
           <% } else { %>
@@ -67,4 +62,104 @@
         </div>
       </div>
     </div>
-  </nav>
+  </nav>  -->
+
+<style>
+  .search-btn {
+    background-color: #fe424d;
+    color: #fff;
+    border-radius: 25px;
+    padding: 0 1rem;
+  }
+
+  .search-btn:hover {
+    background-color: #fe424d;
+    color: #fff;
+  }
+
+  .search-btn i {
+    display: inline;
+    margin-right: 0.5rem;
+  }
+
+  .search-form {
+    max-width: 600px; /* Desktop पर limit */
+    width: 100%; /* Mobile पर full width */
+  }
+
+  .search-inp {
+    border-radius: 25px;
+    padding: 0.5rem 1rem; /* smaller padding */
+    font-size: 1rem;
+    width: 250px; /* fixed width so text stays visible */
+  }
+
+  /* Keep search bar always centered */
+  .navbar-search {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+</style>
+
+<nav class="navbar navbar-expand-md navbar-light bg-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <!-- Brand -->
+    <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass"></i></a>
+
+    <!-- Search bar (always visible) -->
+    <div class="navbar-search d-none d-md-flex flex-grow-1 justify-content-center">
+      <form class="d-flex search-form" role="search" method="GET" action="/listings/search">
+        <input
+          class="form-control me-2 search-inp"
+          type="search"
+          placeholder="Search destination"
+          aria-label="Search"
+          name="q"
+        />
+        <button class="btn search-btn" type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>Search
+        </button>
+      </form>
+    </div>
+
+    <!-- Toggler (only controls right side links) -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible Right Side -->
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/listings/new">Airbnb your home</a>
+        <% if (typeof currUser !== "undefined" && currUser) { %>
+        <a class="nav-link" href="/logout">Log out</a>
+        <% } else { %>
+        <a class="nav-link" href="/signup"><b>Sign up</b></a>
+        <a class="nav-link" href="/login"><b>Log in</b></a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="d-md-none bg-light border-bottom">
+  <div class="container py-2 d-flex justify-content-center">
+    <form class="d-flex search-form w-100" role="search" method="GET" action="/listings/search">
+      <input
+        class="form-control search-inp"
+        type="search"
+        placeholder="Search destination"
+        name="q"
+      />
+      <button class="btn search-btn" type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i> Search
+      </button>
+    </form>
+  </div>
+</div>
