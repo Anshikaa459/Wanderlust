@@ -4,7 +4,7 @@
     color: #fff !important;
     border-radius: 25px !important;
     padding: 0 1rem !important;
-    /* border: none !important; */
+    
   }
 
   .search-btn:hover {
@@ -18,18 +18,18 @@
   }
 
   .search-form {
-    max-width: 600px; /* Desktop पर limit */
-    width: 100% !important; /* Mobile पर full width */
+    max-width: 600px; 
+    width: 100% !important;
   }
 
   .search-inp {
     border-radius: 25px !important;
-    padding: 0.5rem 1rem !important; /* smaller padding */
+    padding: 0.5rem 1rem !important; 
     font-size: 1rem !important;
-    width: 250px !important; /* fixed width so text stays visible */
+    width: 250px !important; 
   }
 
-  /* Keep search bar always centered */
+  
   .navbar-search {
     flex: 1;
     display: flex;
@@ -39,10 +39,10 @@
 
 <nav class="navbar navbar-expand-md navbar-light bg-light border-bottom sticky-top">
   <div class="container-fluid">
-    <!-- Brand -->
+    
     <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass"></i></a>
 
-    <!-- Search bar (always visible) -->
+   
     <div class="navbar-search d-none d-md-flex flex-grow-1 justify-content-center">
       <form class="d-flex search-form" role="search" method="GET" action="/listings/search">
         <input
@@ -58,7 +58,7 @@
       </form>
     </div>
 
-    <!-- Toggler (only controls right side links) -->
+   
     <button
       class="navbar-toggler"
       type="button"
@@ -68,7 +68,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Collapsible Right Side -->
+    
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
         <a class="nav-link" href="/listings/new">Airbnb your home</a>
