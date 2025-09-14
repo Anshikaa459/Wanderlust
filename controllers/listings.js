@@ -76,30 +76,6 @@ module.exports.createListing = async (req, res, next) => {
   req.flash('success', 'New Listing Created!');
   res.redirect('/listings');
 };
-//   try {
-//     console.log("Inside createListing...");
-//     console.log("User:", req.user);
-//     console.log("Body:", req.body);
-//     console.log("File:", req.file);
-
-//     const newListing = new Listing(req.body.listing);
-//     newListing.owner = req.user._id;
-
-//     if (req.file) {
-//       newListing.image = {
-//         filename: req.file.filename,
-//         url: req.file.path,
-//       };
-//     }
-
-//     await newListing.save();
-//     req.flash("success", "New Listing Created!");
-//     res.redirect("/listings");
-//   } catch (err) {
-//     console.error("Create Listing Error:", err);
-//     next(err); // Pass to error handler
-//   }
-// };
 
 module.exports.editListing = async (req, res) => {
   const { id } = req.params;
@@ -125,15 +101,6 @@ module.exports.updateListing = async (req, res) => {
     await listing.save();
   }
 
-  // Trim image URL safely
-  // if (updatedData.image && updatedData.image.url) {
-  //   updatedData.image.url = updatedData.image.url.trim();
-  // }
-
-  // const updatedListing = await Listing.findByIdAndUpdate(id, updatedData, { new: true });
-  // if (!updatedListing) {
-  //   throw new ExpressError("Listing not found for update", 404);
-  // }
   req.flash('success', 'Listing Updated!');
   res.redirect(`/listings/${id}`);
 };
