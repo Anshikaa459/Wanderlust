@@ -9,7 +9,6 @@ const Listing = require('../models/listing.js');
 const dbUrl = process.env.ATLASDB_URL;
 // console.log(process.env.ATLASDB_URL);
 async function main() {
-  console.log('DB URL:', dbUrl);
   await mongoose.connect(dbUrl);
 }
 
