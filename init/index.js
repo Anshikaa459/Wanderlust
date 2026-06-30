@@ -6,17 +6,20 @@ const mongoose = require('mongoose');
 const initdata = require('./data.js');
 const Listing = require('../models/listing.js');
 
+const dbUrl = process.env.ATLASDB_URL;
+// console.log(process.env.ATLASDB_URL);
+async function main() {
+  console.log('DB URL:', dbUrl);
+  await mongoose.connect(dbUrl);
+}
+
 main()
   .then(() => {
     console.log('connection successfull');
+
+    initdb();
   })
   .catch((err) => console.log(err));
-
-const dbUrl = process.env.ATLASDB_URL;
-
-async function main() {
-  await mongoose.connect(dbUrl);
-}
 
 const initdb = async () => {
   await Listing.deleteMany({});
@@ -28,4 +31,4 @@ const initdb = async () => {
   console.log('data was saved');
 };
 
-initdb();
+// initdb();

@@ -2,7 +2,7 @@ const Listing = require('../models/listing');
 
 module.exports.index = async (req, res) => {
   const allListings = await Listing.find({});
-  // allListings.forEach(listing => console.log(listing.image));
+  allListings.forEach((listing) => console.log(listing.image));
   res.render('listings/index.ejs', { allListings });
 };
 

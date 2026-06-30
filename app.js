@@ -25,6 +25,11 @@ const listingsRouter = require('./routes/listing.js');
 const reviewsRouter = require('./routes/review.js');
 const userRouter = require('./routes/user.js');
 
+const dns = require('dns');
+
+// Use Google DNS
+dns.setServers(['8.8.8.8', '8.8.4.4']);
+
 // EJS setup
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
@@ -49,13 +54,13 @@ main()
 
 async function main() {
   try {
-    mongoose.connect(dbUrl, {
+    await mongoose.connect(dbUrl, {
       tls: true,
       ssl: true,
     });
     console.log('✅ MongoDB Atlas Connected Successfully');
   } catch (err) {
-    console.error('❌ MongoDB Connection Error:', err);
+    throw console.error('❌ MongoDB Connection Error:', err);
   }
 }
 
@@ -111,6 +116,10 @@ app.use((req, res, next) => {
 //   res.send(registeredUser);
 // });
 
+app.get('/', (req, res) => {
+  res.redirect('/listings');
+});
+
 app.use('/listings', listingsRouter);
 app.use('/listings', reviewsRouter);
 app.use('/', userRouter);
@@ -135,5 +144,5 @@ app.use((err, req, res, next) => {
 
 // Start server
 app.listen(8080, () => {
-  console.log('App listening on port 8080');
+  console.log('App listening on port 8080: http://localhost:8080/');
 });
